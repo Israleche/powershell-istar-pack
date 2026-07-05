@@ -12,6 +12,10 @@ No manual JSON editing, no copy-pasting profile snippets, no chasing down
 which module goes where. It auto-detects your PowerShell edition and adapts
 the profile it writes accordingly.
 
+<img width="766" height="602" alt="image" src="https://github.com/user-attachments/assets/60cc3d08-46c2-494a-a985-aa4bac91ed3b" />
+
+<img width="948" height="419" alt="image" src="https://github.com/user-attachments/assets/dedd23aa-5446-42c0-8944-a56ef289c90b" />
+
 ---
 
 ## Table of Contents
