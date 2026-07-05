@@ -1,0 +1,127 @@
+# ============================================================================
+# Istar Pack CI: PowerShell syntax validation on every push and pull request
+# ============================================================================
+# This workflow runs the official PowerShell parser over Istar-Pack.ps1
+# to catch syntax errors before they reach users. It runs on Windows
+# (the script's target platform) with both Windows PowerShell 5.1 and
+# PowerShell 7.
+# ============================================================================
+name: validate
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:    # allow manual triggering from the Actions tab
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  powershell-syntax-check:
+    name: PowerShell syntax check
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Validate on PowerShell 7
+        shell: pwsh
+        run: |
+          Write-Host '=== PowerShell version ==='
+          $PSVersionTable
+          Write-Host ''
+          Write-Host '=== Parsing Istar-Pack.ps1 ==='
+          $errors = $null
+          $tokens = $null
+          $ast = [System.Management.Automation.Language.Parser]::ParseFile(
+              (Resolve-Path 'Istar-Pack.ps1').Path,
+              [ref]$tokens,
+              [ref]$errors
+          )
+          if ($errors -and $errors.Count -gt 0) {
+            Write-Host ''
+            Write-Host "Found $($errors.Count) parse error(s):" -ForegroundColor Red
+            foreach ($e in $errors) {
+              Write-Host ("  Line {0}, Col {1}: {2}" -f $e.Extent.StartLineNumber, $e.Extent.StartColumnNumber, $e.Message) -ForegroundColor Red
+            }
+            exit 1
+          }
+          Write-Host ''
+          Write-Host "Parse OK. Token count: $($tokens.Count)" -ForegroundColor Green
+          Write-Host "Function count: $(($ast.FindAll({ $args[0] -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true) | Measure-Object).Count)"
+          exit 0
+
+      - name: Validate on Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          Write-Host '=== PowerShell version ==='
+          $PSVersionTable
+          Write-Host ''
+          Write-Host '=== Parsing Istar-Pack.ps1 ==='
+          $errors = $null
+          $tokens = $null
+          $ast = [System.Management.Automation.Language.Parser]::ParseFile(
+              (Resolve-Path 'Istar-Pack.ps1').Path,
+              [ref]$tokens,
+              [ref]$errors
+          )
+          if ($errors -and $errors.Count -gt 0) {
+            Write-Host ''
+            Write-Host "Found $($errors.Count) parse error(s):" -ForegroundColor Red
+            foreach ($e in $errors) {
+              Write-Host ("  Line {0}, Col {1}: {2}" -f $e.Extent.StartLineNumber, $e.Extent.StartColumnNumber, $e.Message) -ForegroundColor Red
+            }
+            exit 1
+          }
+          Write-Host ''
+          Write-Host "Parse OK. Token count: $($tokens.Count)" -ForegroundColor Green
+          exit 0
+
+  encoding-check:
+    name: UTF-8 with BOM check
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify UTF-8 with BOM
+        run: |
+          set -e
+          # The .ps1 file MUST be UTF-8 with BOM. PS 5.1 mis-parses
+          # box-drawing characters without the BOM.
+          FILE="Istar-Pack.ps1"
+          if [ ! -f "$FILE" ]; then
+            echo "ERROR: $FILE not found"
+            exit 1
+          fi
+          FIRST3=$(head -c 3 "$FILE" | od -An -tx1 | tr -d ' \n')
+          if [ "$FIRST3" != "efbbbf" ]; then
+            echo "ERROR: $FILE is missing the UTF-8 BOM (got: $FIRST3, expected: efbbbf)"
+            echo "Re-save the file as UTF-8 with BOM before merging."
+            exit 1
+          fi
+          echo "OK: $FILE starts with UTF-8 BOM (EF BB BF)"
+
+      - name: Verify no CRLF-only requirement violation
+        run: |
+          set -e
+          # PS scripts tolerate both LF and CRLF. We just check that
+          # the file is not binary-corrupted.
+          FILE="Istar-Pack.ps1"
+          if file "$FILE" | grep -qi "binary"; then
+            echo "ERROR: $FILE appears to be a binary file"
+            exit 1
+          fi
+          echo "OK: $FILE is a text file"

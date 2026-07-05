@@ -1,0 +1,84 @@
+# ============================================================================
+# Istar Pack .gitignore
+# ============================================================================
+
+# ---------------------------------------------------------------------------
+# PowerShell artifacts
+# ---------------------------------------------------------------------------
+*.ps1.bak
+*.ps1.old
+*.psd1.bak
+*.psm1.bak
+PSReadLineHistory.txt
+
+# ---------------------------------------------------------------------------
+# Istar Pack runtime artifacts (settings + backups are user-machine only)
+# These should never be committed; they are generated at runtime in
+# $HOME\.istar-pack\ on the user's machine.
+# ---------------------------------------------------------------------------
+.istar-pack/
+istar-pack.settings.json
+Istar-Pack.settings.json
+Istar-Pack-Backups/
+backups/
+
+# ---------------------------------------------------------------------------
+# Build / release artifacts
+# ---------------------------------------------------------------------------
+release/
+dist/
+*.zip
+*.7z
+*.tar.gz
+!vendor/*.zip            # if you ever vendor a font or theme zip, allow it
+
+# ---------------------------------------------------------------------------
+# IDE and editor state
+# ---------------------------------------------------------------------------
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------------------
+# Logs and transient output
+# ---------------------------------------------------------------------------
+*.log
+*.tmp
+*.out
+*.err
+tmp/
+temp/
+
+# ---------------------------------------------------------------------------
+# Test artifacts
+# ---------------------------------------------------------------------------
+TestResults/
+[Pp]ester[Tt]ests/
+*.trx
+*.coverage
+coverage/
+.coverage
+
+# ---------------------------------------------------------------------------
+# OS-specific junk
+# ---------------------------------------------------------------------------
+$RECYCLE.BIN/
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+
+# ---------------------------------------------------------------------------
+# Local documentation builds / scratch
+# ---------------------------------------------------------------------------
+_site/
+node_modules/            # in case someone adds a docs site later
