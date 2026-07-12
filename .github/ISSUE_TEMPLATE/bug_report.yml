@@ -1,0 +1,86 @@
+name: Bug Report
+description: Report a defect in Istar Pack
+title: "[BUG] <short summary>"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report! Please fill out the
+        sections below so we can reproduce the issue quickly.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A clear, one-sentence description of what is wrong.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the exact steps that trigger the bug.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened. Include the full error message if any.
+    validations:
+      required: true
+  - type: input
+    id: powershell
+    attributes:
+      label: PowerShell version
+      description: Run `$PSVersionTable` and paste the edition + version.
+      placeholder: "PowerShell 7.4.2 / Windows PowerShell 5.1.22621.0"
+    validations:
+      required: true
+  - type: input
+    id: istar-version
+    attributes:
+      label: Istar Pack version
+      description: Shown in the banner, e.g. v1.0.0.
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Active theme
+      options:
+        - "Garden's Dream"
+        - Midnight Cyber
+        - Sakura Bloom
+        - Solar Flare
+        - Mono Slate
+        - Dracula Reborn
+        - "Not sure / other"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Screenshots
+      description: Paste relevant console output or attach a screenshot.
+      render: powershell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have reviewed the script before running it.
+          required: true
+        - label: I have searched existing issues for duplicates.
+          required: true

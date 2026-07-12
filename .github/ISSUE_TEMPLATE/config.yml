@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/Israleche/powershell-istar-pack/security/advisories/new
+    about: Please report security issues privately via GitHub Security Advisories.
+  - name: 💬 General questions
+    url: https://github.com/Israleche/powershell-istar-pack/discussions
+    about: Ask questions or share feedback in Discussions.

@@ -1,5 +1,17 @@
 # Istar Pack
 
+<p align="center">
+  <img src="assets/banner.svg" alt="Istar Pack banner" width="760">
+</p>
+
+<p align="center">
+  <a href="https://github.com/Israleche/powershell-istar-pack/stargazers"><img src="https://img.shields.io/github/stars/Israleche/powershell-istar-pack?style=social" alt="Stars"></a>
+  <img src="https://img.shields.io/badge/PowerShell-5.1%20%7C%207%2B-5391FE?logo=powershell&logoColor=white" alt="PowerShell 5.1+ / 7+">
+  <img src="https://img.shields.io/badge/Platform-Windows-0078D4?logo=windows&logoColor=white" alt="Windows">
+  <img src="https://img.shields.io/badge/Oh%20My%20Posh-themed-00BFFF?logo=powershell&logoColor=white" alt="Oh My Posh">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT">
+</p>
+
 A single-file PowerShell script that turns a fresh Windows machine into a fully
 loaded terminal workstation in one run. It installs the Scoop package manager,
 Oh My Posh, Zoxide, FZF, 7-Zip, a Nerd Font, the recommended PowerShell
@@ -502,11 +514,18 @@ istar-pack/
 ├── README.md                   # This document.
 ├── CHANGELOG.md                # Version history.
 ├── CONTRIBUTING.md             # How to contribute.
+├── CODE_OF_CONDUCT.md          # Community standards.
+├── SECURITY.md                 # Vulnerability reporting policy.
+├── LICENSE                     # MIT license.
 ├── .gitignore                  # PowerShell / Windows gitignore.
+├── assets/
+│   └── banner.svg              # README header banner.
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md       # Bug report template.
-│   │   └── feature_request.md  # Feature request template.
+│   │   ├── bug_report.yml      # Bug report form.
+│   │   ├── feature_request.yml # Feature request form.
+│   │   └── config.yml          # Issue routing / contact links.
+│   ├── PULL_REQUEST_TEMPLATE.md# PR checklist.
 │   └── workflows/
 │       └── validate.yml        # CI: PowerShell syntax check on push.
 └── docs/
@@ -526,7 +545,8 @@ it, you are responsible for reviewing the script before running it.
 The maintainers are not liable for any data loss, system instability,
 or other damage arising from the use of this software.
 
-No license is currently attached to this repository. Until a license
-is added, default copyright law applies: you may read and fork the
-code for personal review, but redistribution or commercial use
-requires explicit permission from the maintainer.
+Istar Pack is released under the [MIT License](LICENSE). You are free to
+use, modify, and redistribute it, including for commercial purposes, as long
+as the copyright notice and license text are retained. The script installs
+third-party software (Scoop, Oh My Posh, Zoxide, FZF, 7-Zip, Nerd Fonts) which
+carry their own respective licenses.

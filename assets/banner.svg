@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="400" viewBox="0 0 1520 400" role="img" aria-label="Istar Pack banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#10241a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3ddc84"/>
+      <stop offset="1" stop-color="#7ee787"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1520" height="400" fill="url(#bg)"/>
+
+  <!-- terminal window frame -->
+  <rect x="120" y="92" width="1280" height="216" rx="14" fill="#0a0f0c" stroke="#1f3b2c" stroke-width="2"/>
+  <circle cx="152" cy="124" r="7" fill="#ff5f56"/>
+  <circle cx="178" cy="124" r="7" fill="#ffbd2e"/>
+  <circle cx="204" cy="124" r="7" fill="#27c93f"/>
+  <rect x="120" y="148" width="1280" height="2" fill="#1f3b2c"/>
+
+  <!-- prompt line -->
+  <text x="150" y="200" font-family="Fira Code, Cascadia Code, Consolas, monospace" font-size="30" fill="#7ee787">PS &#187;</text>
+  <text x="232" y="200" font-family="Fira Code, Cascadia Code, Consolas, monospace" font-size="30" fill="#e6edf3">.\Istar-Pack.ps1</text>
+
+  <!-- theme chips -->
+  <rect x="150" y="232" width="170" height="34" rx="17" fill="#123524" stroke="#3ddc84" stroke-width="1.5"/>
+  <text x="170" y="255" font-family="Segoe UI, sans-serif" font-size="18" fill="#7ee787">Garden's Dream</text>
+  <rect x="336" y="232" width="150" height="34" rx="17" fill="#1a1f2b" stroke="#3a4a66" stroke-width="1.5"/>
+  <text x="356" y="255" font-family="Segoe UI, sans-serif" font-size="18" fill="#9fb0c9">Midnight Cyber</text>
+  <rect x="502" y="232" width="148" height="34" rx="17" fill="#2a1626" stroke="#6b3a5e" stroke-width="1.5"/>
+  <text x="522" y="255" font-family="Segoe UI, sans-serif" font-size="18" fill="#e0a6cf">Sakura Bloom</text>
+
+  <!-- title -->
+  <text x="760" y="92" text-anchor="middle" font-family="Segoe UI, Verdana, sans-serif" font-size="46" font-weight="700" fill="url(#accent)">Istar Pack</text>
+  <text x="760" y="350" text-anchor="middle" font-family="Segoe UI, Verdana, sans-serif" font-size="22" fill="#8b9bab">One-shot PowerShell terminal setup &#183; six themes &#183; PS 5.1 &amp; 7+</text>
+</svg>

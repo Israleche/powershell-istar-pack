@@ -63,6 +63,23 @@ Instructions for contributors. Covers the project philosophy, ground
 rules, bug reporting, pull request process, and how to add a new
 theme.
 
+### `CODE_OF_CONDUCT.md`
+
+The project's [Contributor Covenant](https://www.contributor-covenant.org)
+Code of Conduct. Sets expectations for behavior in the community and how
+violations are reported and enforced.
+
+### `SECURITY.md`
+
+Security policy. Documents which versions are supported, how to report a
+vulnerability privately (GitHub Security Advisories or email), and the
+scope of what this policy covers.
+
+### `LICENSE`
+
+The MIT License. Grants permission to use, copy, modify, and distribute the
+software. Every file in the repository is covered by this license.
+
 ### `.gitignore`
 
 Standard PowerShell and Windows gitignore, plus Istar Pack runtime
@@ -73,18 +90,28 @@ testing does not pollute the repository.
 
 ## `.github/` Directory
 
-### `.github/ISSUE_TEMPLATE/bug_report.md`
+### `.github/ISSUE_TEMPLATE/bug_report.yml`
 
-Template for bug reports. Asks the user for Windows version,
-PowerShell version, Istar Pack version, the menu option they
-selected, and the full error message. Using the template ensures
-we have enough information to reproduce the issue.
+YAML issue form for bug reports. Collects a structured summary, steps to
+reproduce, expected/actual behavior, PowerShell version, Istar Pack version,
+active theme, and logs. Using the form ensures we have enough information to
+reproduce the issue.
 
-### `.github/ISSUE_TEMPLATE/feature_request.md`
+### `.github/ISSUE_TEMPLATE/feature_request.yml`
 
-Template for feature requests. Asks the user for the problem they
-are trying to solve, their proposed solution, alternatives they have
-considered, and the scope of the change.
+YAML issue form for feature requests. Asks for the problem being solved, the
+proposed solution, alternatives considered, and the change scope.
+
+### `.github/ISSUE_TEMPLATE/config.yml`
+
+Issue routing configuration. Disables blank issues and provides contact
+links for private security reports and general questions.
+
+### `.github/PULL_REQUEST_TEMPLATE.md`
+
+Pull request checklist. Reminds contributors to update `CHANGELOG.md`, keep
+`Istar-Pack.ps1` parseable on both PowerShell editions, and preserve the
+UTF-8 BOM.
 
 ### `.github/workflows/validate.yml`
 
@@ -104,6 +131,16 @@ request. It does three things:
 The workflow runs on `windows-latest` (for the PowerShell checks)
 and `ubuntu-latest` (for the encoding check). Total runtime is
 typically under two minutes.
+
+---
+
+## `assets/` Directory
+
+### `assets/banner.svg`
+
+SVG banner shown at the top of `README.md`. Uses the signature
+"Garden's Dream" green palette so the repository header matches the
+project's visual identity.
 
 ---
 
